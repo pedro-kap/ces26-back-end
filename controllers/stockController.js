@@ -45,7 +45,7 @@ router.post('/createStock',
    },
    );
 
-router.get('/checkStock', async (req,res,next) => {
+router.get('/getStock', async (req,res,next) => {
    try {
 	   console.log(req.query)
       const stock = await stockService.getByName(req.query);
