@@ -31,4 +31,4 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/stock',stockController);
 
-app.listen(3000);
+app.listen(5000);
