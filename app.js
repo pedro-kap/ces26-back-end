@@ -12,7 +12,7 @@ mongoose.plugin(mongoosePatchUpdate);
 mongoose.Promise = global.Promise;
 
 //Connecting to mongoose
-mongoose.connect(nconf.get("dbConfig:url"),{
+mongoose.connect("mongodb://localhost:27017",{
    useNewUrlParser: true,
    useUnifiedTopology: true
 }).then( connection => {
@@ -21,7 +21,7 @@ mongoose.connect(nconf.get("dbConfig:url"),{
    console.log('error connecting to MongoDB');
    console.log(err);
    process.exit();
-});
+}); 
 
 //Setting up morgan
 app.use(morgan('combined'));

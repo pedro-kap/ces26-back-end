@@ -48,8 +48,6 @@ class StockService{
          return null;
       return await StockModel.deleteOne({symbol});
    }
-
-
 }
 
 const stockServiceInstance = new StockService;
