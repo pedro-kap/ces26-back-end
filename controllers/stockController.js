@@ -48,7 +48,7 @@ router.post('/createStock',
 router.get('/getStock', async (req,res,next) => {
    try {
 	   console.log(req.query)
-      const stock = await stockService.getBySymbol(query);
+      const stock = await stockService.getBySymbol(req.query);
       if (stock != null)
          res.status(201).json({stock});
       else
