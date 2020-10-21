@@ -1,57 +1,56 @@
-const RoomModel = require('../models/RoomModel');
+const StockModel = require('../models/StockModel');
+class StockService{
 
-class RoomService{
-
-   toObject(RoomModel){
-      return RoomModel ? RoomModel.toObject() : null;
+   toObject(StockModel){
+      return StockModel ? StockModel.toObject() : null;
    }
 
-   async create(RoomData){
-      let roomExists = await RoomModel.exists({name_room: RoomData.name_room, selectionProcess: RoomData.selectionProcess});
-      if (roomExists)
+   async create(StockData){
+      let stockExists = await StockModel.exists({symbol: StockData.symbol});
+      if (stockExists)
          return null;
-      const Room = new RoomModel(RoomData);
-      return this.toObject(await Room.save())
+      const Stock = new StockModel(StockData);
+      return this.toObject(await Stock.save())
    }
 
-   async updateById(RoomData){
-      const roomExists = await RoomModel.exists({_id: RoomData._id});
-      if (!roomExists)
+   async updateById(StockData){
+      const stockExists = await StockModel.exists({symbol: StockData.symbol});
+      if (!stockExists)
          return null;
-      return await RoomModel.patchUpdate({_id: RoomData._id}, RoomData);
+      return await StockModel.patchUpdate({symbol: StockData.symbol}, StockData);
    }
 
    async deleteById({_id}){
-      let roomExists = await RoomModel.exists({_id});
-      if (!roomExists)
+      let stockExists = await StockModel.exists({_id});
+      if (!stockExists)
          return null;
-      return await RoomModel.deleteOne({_id});
+      return await StockModel.deleteOne({_id});
    }
 
-   async getByName({name_room}){
-      return await RoomModel.findOne({name_room}).lean();
+   async getByName({name}){
+      return await StockModel.findOne({name}).lean();
    }
 
-   async updateByName(RoomData) {
-      let roomExists = await RoomModel.exists({name_room: RoomData.name_room});
-      if (!roomExists)
+   async updateByName(StockData) {
+      let stockExists = await StockModel.exists({symbol: StockData.symbol});
+      if (!stockExists)
          return null;
-      return await RoomModel.patchUpdate({name_room: RoomData.name_room}, RoomData);
+      return await StockModel.patchUpdate({symbol: StockData.symbol}, StockData);
    }
 
    async getAll(query) {
-      return await RoomModel.find(query).sort({name_room:1}).lean();
+      return await StockModel.find(query).sort({name:1}).lean();
    }
 
-   async deleteByName({name_room}) {
-      let roomExists = await RoomModel.exists({name_room});
-      if (!roomExists)
+   async deleteByName({name}) {
+      let stockExists = await StockModel.exists({name});
+      if (!stockExists)
          return null;
-      return await RoomModel.deleteOne({name_room});
+      return await StockModel.deleteOne({name});
    }
 
 
 }
 
-const roomServiceInstance = new RoomService;
-module.exports = roomServiceInstance;
+const stockServiceInstance = new StockService;
+module.exports = stockServiceInstance;
