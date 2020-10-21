@@ -6,24 +6,10 @@ const router = express.Router();
 router.post('/createStockList',
    async(req,res,next) => {
       try{
-         res.locals.data.forEach(async p => {
-            const createdStock = await stockService.create(p);
-         });
-         res.status(200).send();
-      }catch(error){
-         res.status(400).send();
-         console.log(error);
-      }
-      next();
-   });
-
-router.post('/createStocks',
-   async(req,res,next) => {
-      try{
-            console.log(req.body);
+         console.log(req.body);
          req.body.forEach(async p => {
-            const createdStock = await stockService.create(p);
-         });
+         const createdStock = await stockService.create(p);
+      });
          res.status(200).send();
       }catch(error){
          res.status(400).send();
@@ -73,28 +59,9 @@ router.get('/checkStock', async (req,res,next) => {
    next();
 });
 
-
-router.put('/getStock', async(req,res,next) => {
-   try{
-      const updatedStock = await stockService.updateById(req.body);
-      if (updatedStock != null){
-         res.locals.updatedOk = true;
-         res.status(200).send({updatedStock});
-      }
-      else
-         res.status(404).send({ error: "Stock doesn't exists!" });
-   }catch(error){
-      console.log(error);
-      res.status(400).send();
-   }
-   next();
-},
-);
-
-
 router.delete('/deleteStock', async(req,res,next) => {
    try{
-      const deletedStock = await stockService.deleteById(req.query);
+      const deletedStock = await stockService.deleteByName(req.query);
       if (deletedStock != null){
          res.locals.deletedOk = true;
          res.status(200).send({deletedStock});
