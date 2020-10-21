@@ -27,8 +27,8 @@ class StockService{
       return await StockModel.deleteOne({_id});
    }
 
-   async getByName({name}){
-      return await StockModel.findOne({name}).lean();
+   async getBySymbol({symbol}){
+      return await StockModel.findOne({symbol}).lean();
    }
 
    async updateByName(StockData) {
@@ -42,11 +42,11 @@ class StockService{
       return await StockModel.find(query).sort({name:1}).lean();
    }
 
-   async deleteByName({name}) {
-      let stockExists = await StockModel.exists({name});
+   async deleteBySymbol({symbol}) {
+      let stockExists = await StockModel.exists({symbol});
       if (!stockExists)
          return null;
-      return await StockModel.deleteOne({name});
+      return await StockModel.deleteOne({symbol});
    }
 
 

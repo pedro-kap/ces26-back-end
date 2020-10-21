@@ -48,7 +48,7 @@ router.post('/createStock',
 router.get('/getStock', async (req,res,next) => {
    try {
 	   console.log(req.query)
-      const stock = await stockService.getByName(req.query);
+      const stock = await stockService.getBySymbol(query);
       if (stock != null)
          res.status(201).json({stock});
       else
@@ -61,7 +61,7 @@ router.get('/getStock', async (req,res,next) => {
 
 router.delete('/deleteStock', async(req,res,next) => {
    try{
-      const deletedStock = await stockService.deleteByName(req.query);
+      const deletedStock = await stockService.deleteBySymbol(req.query);
       if (deletedStock != null){
          res.locals.deletedOk = true;
          res.status(200).send({deletedStock});
