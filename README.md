@@ -31,7 +31,7 @@ $ git clone https://github.com/lulis123/ces26-back-end
 
 # Primeira utilização
 # Entre no repositório
-$ cd front-vestibulinho-casd
+$ cd ces26-back-end
 
 # Primeira utilização
 # Instale as dependências que estão presentes no arquivo 'package.json'
