@@ -12,7 +12,7 @@ mongoose.plugin(mongoosePatchUpdate);
 mongoose.Promise = global.Promise;
 
 //Connecting to mongoose
-mongoose.connect("mongodb://localhost:27017",{
+mongoose.connect("mongodb+srv://db_user:OkltmzmFo5BNq5hk@cluster0.h04va.mongodb.net/Cluster0?retryWrites=true&w=majority",{
    useNewUrlParser: true,
    useUnifiedTopology: true
 }).then( connection => {
