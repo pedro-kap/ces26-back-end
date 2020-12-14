@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const mongoosePatchUpdate = require('mongoose-patch-update');
 const stockController = require('./controllers/stockController');
+const PORT = process.env.PORT || 80;
 const cors = require('cors')
 const app = express();
 const morgan = require('morgan');
@@ -30,5 +31,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/stock',stockController);
+app.use('/',(req,res,next)=>{
+   res.status(200).send("Seja bem vindo à API do exame de CES-26");
+})
 
-app.listen(5000);
+app.listen(PORT);
