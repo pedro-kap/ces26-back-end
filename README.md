@@ -1,6 +1,6 @@
 <img alt="logo-ita" title="#CES 27 EXAME" src="https://logodownload.org/wp-content/uploads/2018/01/ita-logo.png" width="400px" />
 
-## [Back-end] CES-27 Exame
+## [Back-end] CES-26 Exame
 Projeto do Back-end criado para a aplicação feita na disciplina de CES-26 pelos alunos: Luís Eduardo Martins Lauro, Ítalo Rennan Lima Silva e Pedro Henrique Ferreira Cavalcante
 
 ### Tecnologias
