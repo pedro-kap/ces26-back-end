@@ -1,7 +1,28 @@
 const express = require('express');
 const stockService = require('../services/stockService');
+const helmet =require('helmet');
+
 
 const router = express.Router();
+
+router.use(helmet.hidePoweredBy());
+//Endpoint
+router.get('/',function(req,res){
+	res.send('Time to secure your application...');
+});
+
+router.use(helmet.csp({
+	defaultSrc:["'self'"],
+	scriptSrc:['*.google-analytics.com'],
+	styleSrc:["'unsafe-inline'"],
+	imgSrc:['*.google-analytics.com'],
+	connectSrc:["'none'"],
+	fontSrc:[],
+	objectSrc:[],
+	mediaSrc:[],
+	frameSrc:[]
+}));
+
 
 router.post('/createStockList',
    async(req,res,next) => {
